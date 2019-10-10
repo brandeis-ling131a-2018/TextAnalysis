@@ -69,7 +69,8 @@ class BasicTests(unittest.TestCase):
             'Mrs.', 'Weston', 'Woodhouse', 'could', 'every', 'good', 'know',
             'little', 'might', 'much', 'must', 'never', 'one', 'said', 'say',
             'thing', 'think', 'would'}
-        content_words = [w[0] for w in most_frequent_content_words(self.emma)]
+        example_content_words = set([w.lower() for w in example_content_words])
+        content_words = [w[0].lower() for w in most_frequent_content_words(self.emma)]
         overlap = len(example_content_words.intersection(set(content_words)))
         self.assertTrue(overlap > 15)
 
@@ -79,18 +80,32 @@ class BasicTests(unittest.TestCase):
         self.assertTrue(min(frequencies) > 100)
 
     def test_most_frequent_bigrams_overlap(self):
-        """Bigrams overlap 60% with the example solution."""
-        example_bigrams = {
+        """Bigrams overlap 60% with the first example solution or 45% with the second
+        example solution (which cuts out all the Mr. X and Mrs. X examples but
+        takes in a few more bigrams)."""
+        example_bigrams1 = {
             'Emma could', 'Frank Churchill', 'Jane Fairfax', 'John Knightley',
             'Miss Bates', 'Miss Fairfax', 'Miss Smith', 'Miss Taylor',
             'Miss Woodhouse', 'Mr. Elton', 'Mr. Frank', 'Mr. Knightley',
             'Mr. Martin', 'Mr. Weston', 'Mr. Woodhouse', 'Mrs. Churchill',
             'Mrs. Elton', 'Mrs. Goddard', 'Mrs. Weston', 'dare say',
             'every body', 'every thing', 'great deal', 'said Emma', 'said Mr.'}
-        bigrams = set(["%s %s" % (x[0], x[1]) for x in
+        example_bigrams2 = {
+            'Box Hill', 'Colonel Campbell', 'Emma could', 'Emma felt',
+            'Every body', 'Frank Churchill', 'Harriet Smith', 'Jane Fairfax',
+            'John Knightley', 'Maple Grove', 'Miss Bates', 'Miss Fairfax',
+            'Miss Hawkins', 'Miss Smith', 'Miss Taylor', 'Miss Woodhouse',
+            'Robert Martin', 'body else', 'cried Emma', 'dare say', 'dear Emma',
+            'every body', 'every day', 'every thing', 'good deal', 'great deal',
+            'said Emma', 'said Mr.', 'said Mrs.', 'would never', 'would rather',
+            'young lady', 'young woman'}
+        example_bigrams1 = set(w.lower() for w in example_bigrams1)
+        example_bigrams2 = set(w.lower() for w in example_bigrams2)
+        bigrams = set(["%s %s" % (x[0].lower(), x[1].lower()) for x in
                        [w[0] for w in most_frequent_bigrams(self.emma)]])
-        overlap = len(example_bigrams.intersection(set(bigrams)))
-        self.assertTrue(overlap > 15)
+        overlap1 = len(example_bigrams1.intersection(set(bigrams)))
+        overlap2 = len(example_bigrams2.intersection(set(bigrams)))
+        self.assertTrue(overlap1 > 15 or overlap2 > 15)
 
     def test_most_frequent_bigrams_minimal_frequency(self):
         """Least frequent bigram occurs at least 20 times."""
