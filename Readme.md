@@ -2,6 +2,12 @@
 
 In this class you will build a text analyzer, starting from scratch and adding more and more functionality as the course goes on. This repository contains the instructions for the first step. For later assignments you will be given additional instructions, data and code that can be added to this repository.
 
+[ [assignment 3](extensions/a3-search.md)
+| assignment 4
+| assignment 5
+| assignment 6
+]
+
 We start of with this readme file, a `data` directory and a `main.py` script. Your mission is to edit the main script and add the following functionality:
 
 1. Read source data from a file or a set of files in a directory
@@ -81,7 +87,7 @@ In addition, edit and complete the following two functions:
  (('Mr.', 'Elton'), 211),
  (('Miss', 'Woodhouse'), 168),
  (('Mr.', 'Weston'), 158)]
- ````
+````
 
 
 ## Generate a vocabulary for the text
