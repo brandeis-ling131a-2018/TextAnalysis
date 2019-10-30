@@ -119,6 +119,8 @@ class Vocabulary():
         if word not in self.items:
             return None
         synsets = wn.synsets(word)
+        # somewhat arbitrary choice to make unknown words nouns, returning None
+        # or 'UNKNOWN' would have been fine too.
         return synsets[0].pos() if synsets else 'n'
 
     def gloss(self, word):

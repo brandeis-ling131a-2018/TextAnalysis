@@ -176,7 +176,7 @@ The test file in `test_a3.py` has tests for both the refactoring and the search 
 
 ## Part 3 - Finite State Processing (extra credit)
 
-For this part you create an FSA class that implements a simple Deterministic Finite State Automaton. You define it by giving a set of states (where 'S0' is by definition the start state), a set of final states and a set of transitions:
+For this part you create an FSA class that implements a simple Deterministic Finite State Automaton. You build it by defining a set of states (where 'S0' is by definition the start state), a set of final states and a set of transitions:
 
 ```
 >>> from main_a3 import FSA
@@ -207,13 +207,16 @@ True
 False
 ```
 
-The second part here is to use this FSA to find sub sequences in the text. You would define an FSA for some pattern:
+The next step here is to use this FSA to find sub sequences in the text. You would define an FSA for some pattern:
 
 ```
 >>> states = ['S0', 'S1', 'S2']
 >>> final_states = ['S2']
 >>> transitions = [ ('S0', 'Sir', 'S1'), ('S1', 'Galahad', 'S2'), ('S1', 'Lancelot', 'S2') ]
 >>> fsa = FSA('test', states, final_states, transitions)
+```
+
+```
 >>> fsa.pp
 <State S0>
    Sir --> S1
