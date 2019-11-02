@@ -50,15 +50,14 @@ class FSA(object):
         self.match = False
         self.print_state(indent=3, debug=debug)
         while self.queue:
-            next_symbol = self.queue[0]
+            next_symbol = self.queue.pop(0)
             if next_symbol in self.current_state.transitions:
                 self.current_state = self.current_state.transitions[next_symbol]
-                self.queue.pop(0)
                 self.consumed.append(next_symbol)
+                if self.current_state.is_final:
+                    self.match = Match(self)
             else:
                 break
-            if self.current_state.is_final:
-                self.match = Match(self)
             self.print_state(indent=3, debug=debug)
         return self.match
         
@@ -97,3 +96,22 @@ class Match(object):
     
     def __len__(self):
         return len(self.consumed)
+
+
+if __name__ == '__main__':
+
+    states = ['S0', 'S1', 'S2']
+    final_states = ['S2']
+    transitions = [ ('S0', 'a', 'S1'), ('S1', 'b', 'S1'), ('S1', 'c', 'S2') ]
+    fsa_abc = FSA('test', states, final_states, transitions)
+
+    print()
+    fsa_abc.pp()
+
+    print("\nTesting some strings...\n")
+    for s in ('abc', 'ab', 'abbc', 'abcd'):
+        print("   %-5s" % s, end='')
+        print(' ', fsa_abc.accept(s))
+
+    print("\nConsuming as much as possible from abbcd...\n")
+    fsa_abc.consume('abbcd', debug=True)
