@@ -35,7 +35,7 @@ Do this by adding code to the `brown.py` module. Use the code scaffolding as giv
 [('that', ['DT', 'QL', 'NIL', 'WPS-TL', 'WPO', ...])]
 >>> brown.tags_in_order_of_decreasing_frequency(bc)
 [('NN', 152470), ('IN', 120557), ('AT', 97959), ('JJ', 64028), ('.', 60638)]
->>> brown.tags_that_nouns_are_most_commonly_found_after(bc, n=5)
+>>> brown.tags_that_nouns_are_most_commonly_found_after(bc)
 [('AT', 59656), ('JJ', 40864), ('IN', 24012), ('NN', 17789), ('PP$', 12241), ...]
 >>> brown.proportion_ambiguous_word_types(bc)
 0.19231155274515707
@@ -84,12 +84,13 @@ For pickling, you inevitably need to hard-code the path of the pickle jar and re
 
 We give you some skeleton code in `main_a4.py`.
 
-When we you look at your code, we would expect
+When we you look at your code, we would expect to be able to run
 
 ```
 $ python main_a4.py --tagger-train
 $ python main_a4.py --tagger-run "some sentence to be tagged"
-$ python main_a4.py --tagger-test <reviews|news>
+$ python main_a4.py --tagger-test news
+$ python main_a4.py --tagger-test reviews
 ```
 
 You need some code to deal with the arguments. You could access the `sys.argv` variable directly or you could use the `getopt` or `argparse` modules.
@@ -116,4 +117,4 @@ For parts 1 and 2 we will run both pep8 and the unit tests (you will get access 
 
 The other five point are assigned by the TA by looking at the general quality of your code. When you pass all tests you should get 3 or 4, if you have no code you get a 0, if you go the extra mile with good structure and good comments you get 5 points. It is possible to fail the tests and still get a good score here.
 
-Parts 3 and 4 are graded by the TA by looking at the code and running it. The scores assigned are a
+Parts 3 and 4 are graded by the TA by looking at the code and running it. There are no tests and we won't pep8 you on this. Scores are assigned on a 0-5 scale much like laid out in the paragraph above, except that instead of looking at tests we will look at wether your results make sense.
