@@ -2,7 +2,7 @@
 
 This assignment has three parts and an optional extra credit fourth part. The first two parts are on exploring a tagged corpus and a Text and the third and fourth parts are on training and evaluating a part-of-speech tagger. Your code will be created in three new files: `main_a4.py`, `brown.py` and `postag.py`. You will be given skeleton versions of those files, You will need to add existing code from `main_a3.py` to `main_a4.py` (you may also do this from the example answer to assignment 3, included in this repository). The goal is for most of your code to end up in `brown.py` and `postag.py`, but at the same time we will be calling some of the functionality via `main_a4.py`.
 
-Submit by committing your changes and pushing them up to your GitHub repository. Deadline is November 12th around noon.
+Submit by committing your changes and pushing them up to your GitHub repository. Deadline is November 15th around noon.
 
 
 ## Part 1 - Exploring a Tagged Corpus
@@ -39,7 +39,7 @@ Do this by adding code to the `brown.py` module. Use the code scaffolding as giv
 [('AT', 59656), ('JJ', 40864), ('IN', 24012), ('NN', 17789), ('PP$', 12241), ...]
 >>> brown.proportion_ambiguous_word_types(bc)
 0.19231155274515707
->>> brown.proportion_ambiguous_word_tokes(bc)
+>>> brown.proportion_ambiguous_word_tokens(bc)
 0.8414586046063011
 ```
 
@@ -59,16 +59,24 @@ grail = main_a4.Text('data/grail.txt')
 grail.nouns_more_common_in_plural_form()
 grail.which_word_has_greatest_number_of_distinct_tags()
 grail.tags_in_order_of_decreasing_frequency()
-grail.tags_that_nouns_are_most_commonly_found_after(n=5)
+grail.tags_that_nouns_are_most_commonly_found_after()
 grail.proportion_ambiguous_word_types()
-grail.proportion_ambiguous_word_tokes()
+grail.proportion_ambiguous_word_tokens()
 ```
 
 Answers are not shown here but the results should be in the same format as for the previous part (the actual results will differ of course).
 
 Think about what changes you need to make to Text to make this possible. The most obvious changes are that you need to add tags and the methods named above. You can use the NLTK `pos_tag` method for adding the tags. For the methods, you do not want to write them all from scratch but you want to somehow reuse the module level functions that you created for part 1.
 
-You will again be given unit tests for some of these methods. But you will need to write unit tests for the first three of these. Add those test to `main_a4.py` and set it up so that they run each time you run `main_a4.py`. For these unit tests you should aim for 3-5 test for each function and you should try to test for some boundary conditions (like an empty Text). You may also want to create a small test file with tagged content.
+You will again be given unit tests for some of these methods. But you will need to write unit tests for the first three of these:
+
+```
+nouns_more_common_in_plural_form()
+which_word_has_greatest_number_of_distinct_tags()
+tags_in_order_of_decreasing_frequency()
+```
+
+Add those test to `main_a4.py` and set it up so that they run each time you run `main_a4.py`. For these unit tests you should aim for 3-5 test for each function and you should try to test for some boundary conditions (like an empty Text). You may also want to create a small test file with tagged content.
 
 
 ## Part 3 - Training and Evaluating Taggers
@@ -76,11 +84,11 @@ You will again be given unit tests for some of these methods. But you will need 
 The third part of this assignment is to write your own tagger. This sounds much harder than it is because the nltk module gives you almost everything you need. You should train this tagger on the news category of the Brown Corpus. Create the tagger in `postag.py`. Your tagger script should be able to:
 
 1. Train a POS tagging model on the "news" portion of the Brown corpus and pickle the model.
-1. Run on a sentence and print the result to standard output (`sys.stdout`)
+1. Run on a sentence and print the result to the standard output (`sys.stdout`)
 1. Print how well this tagger evaluates on sentences from the Brown "news" category
 1. Print how well this tagger evaluates on sentences from the Brown "reviews" category
 
-For pickling, you inevitably need to hard-code the path of the pickle jar and re-use the path in test/evaluate functions, but make sure the path is a relative path.
+For pickling, you inevitably need to hard-code the path of the pickle jar and re-use the path in test/evaluate functions, but make sure the path is a relative path so we can run it on our machines.
 
 We give you some skeleton code in `main_a4.py`.
 
