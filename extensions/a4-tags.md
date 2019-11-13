@@ -76,7 +76,7 @@ which_word_has_greatest_number_of_distinct_tags()
 tags_in_order_of_decreasing_frequency()
 ```
 
-Add those test to `main_a4.py` and set it up so that they run each time you run `main_a4.py`. For these unit tests you should aim for 3-5 test for each function and you should try to test for some boundary conditions (like an empty Text). You may also want to create a small test file with tagged content.
+Add those test to a new file `main_a4_test.py`. This is changed from a prior version of these instructions (where tests were added to `main_a4.py`) because of some annoying interactions between the test code and code that you would add in part 3. Set it up so that your tests run each time you run `python main_a4_test.py`. For these unit tests you should aim for 3-5 test for each function and you should try to test for some boundary conditions (like an empty Text). You may also want to create a small test file with tagged content.
 
 
 ## Part 3 - Training and Evaluating Taggers
@@ -115,6 +115,8 @@ $ python main_a4_extra.py --tagger-run "some sentence to be tagged"
 
 For mappings from a long list of tags to universal tags see
 https://github.com/slavpetrov/universal-pos-tags/blob/master/en-brown.map.
+
+NOTE. The idea for this part is to map tags from Brown to the universal tags. However, it turns out that there is a very simple way of doing this, if you can find it. When you do that, you will get some extra credit, but to get the full extra credit you need to deal with the mappings.
 
 
 ## How will this be graded?
