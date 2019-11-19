@@ -4,7 +4,7 @@ In this class you will build a text analyzer, starting from scratch and adding m
 
 [ [assignment 3](extensions/a3-search.md)
 | [assignment 4](extensions/a4-tags.md)
-| assignment 5
+| [assignment 5](extensions/a5-sentiment.md)
 ]
 
 We start of with this readme file, a `data` directory and a `main.py` script. Your mission is to edit the main script and add the following functionality:
