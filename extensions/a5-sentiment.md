@@ -33,13 +33,26 @@ We should also be able to run your code on a file that we provide:
 $ python3 main_a5.py --run 'bayes'|'tree' <filename>
 ```
 
- Here, your code should ask what classifier model to use and then run the classifier over the given file, which will be a file in the same format as the data used to train your model. We do not care that much whether your code gives the right answer, we just want to see it run and we want it to print `pos` or `neg` to the standard output. For example:
+ Here, your code should ask what classifier model to use and then run the classifier over the given file, which will be a file in the same format as the data used to train your model. We do not care that much whether your code gives the right answer, we just want to see it run and we want it to print `pos` or `neg` to the standard output. Here is an example exchange:
 
  ```
  $ python3 main_a5.py --run bayes data/review-example.txt
- pos
+ Choose a model:
+ 1 - all words raw counts
+ 2 - all words binary
+ 3 - SentiWordNet words
+ 4 - Subjectivity Lexicon words
+ 5 - all words plus Negation
+ Type a number:
+ $
  ```
 
+Now we would type a number from 1 through 5 and your code would print the result:
+
+```
+$ 3
+pos
+```
 
 ## Data Handling
 
@@ -69,7 +82,7 @@ SentiWordNet is available in WordNet and can be used as follows:
 pos:0.875 neg:0.0 obj:0.125
 ```
 
-The MPQA Subjectivity lexicon will be part of the repository. It has about 8000 words associated with parts of speech and a subjectivity score. The lexicon is stored in `data\subjectivity_clues_hltemnlp05` which has both a readme file and a data file. Lines in the data file look like:
+The MPQA Subjectivity lexicon will be part of the repository. It has about 8000 words associated with parts of speech and a subjectivity score. The lexicon is stored in `data/subjectivity_clues_hltemnlp05` which has both a readme file and a data file. Lines in the data file look like:
 
 ```
 type=weaksubj len=1 word1=abandoned pos1=adj stemmed1=n priorpolarity=negative
