@@ -2,7 +2,7 @@
 
 In this assignment you will use a data set of movie reviews and experiment with the Naïve Bayes and decision tree classifiers in Scikit Learn.
 
-Deadline: December 2nd.
+Deadline: December 10th.
 
 Put your code in a file named `main_a5.py`. You could put all your code in there, but you may also use as many auxiliary files as you want.  
 
